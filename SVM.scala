@@ -18,6 +18,15 @@ val scoreAndLabels = test.map { point =>
 }
 
 val metrics = new BinaryClassificationMetrics(scoreAndLabels)
-val auROC = metrics.areaUnderROC()
 
+val auROC = metrics.areaUnderROC()
 println(s"Area under ROC = $auROC")
+
+val accuracy = metrics.accuracy
+println("Summary Statistics")
+println(s"Accuracy = $accuracy")
+
+println(s"Weighted precision: ${metrics.weightedPrecision}")
+println(s"Weighted recall: ${metrics.weightedRecall}")
+println(s"Weighted F1 score: ${metrics.weightedFMeasure}")
+println(s"Weighted false positive rate: ${metrics.weightedFalsePositiveRate}")
